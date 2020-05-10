@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/lab8.dir/0001.cpp.o  -o lab8 
+/usr/bin/c++  -g   CMakeFiles/lab8.dir/0002.cpp.o  -o lab8 

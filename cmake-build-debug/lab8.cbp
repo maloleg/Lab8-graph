@@ -84,7 +84,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/oleg/CLionProjects/lab8/0001.cpp">
+		<Unit filename="/home/oleg/CLionProjects/lab8/0002.cpp">
 			<Option target="lab8"/>
 		</Unit>
 		<Unit filename="/home/oleg/CLionProjects/lab8/CMakeLists.txt">
