@@ -57,27 +57,27 @@ include CMakeFiles/lab8.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab8.dir/flags.make
 
-CMakeFiles/lab8.dir/0002.cpp.o: CMakeFiles/lab8.dir/flags.make
-CMakeFiles/lab8.dir/0002.cpp.o: ../0002.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/oleg/CLionProjects/lab8/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab8.dir/0002.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab8.dir/0002.cpp.o -c /home/oleg/CLionProjects/lab8/0002.cpp
+CMakeFiles/lab8.dir/0004.cpp.o: CMakeFiles/lab8.dir/flags.make
+CMakeFiles/lab8.dir/0004.cpp.o: ../0004.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/oleg/CLionProjects/lab8/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab8.dir/0004.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab8.dir/0004.cpp.o -c /home/oleg/CLionProjects/lab8/0004.cpp
 
-CMakeFiles/lab8.dir/0002.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab8.dir/0002.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/oleg/CLionProjects/lab8/0002.cpp > CMakeFiles/lab8.dir/0002.cpp.i
+CMakeFiles/lab8.dir/0004.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab8.dir/0004.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/oleg/CLionProjects/lab8/0004.cpp > CMakeFiles/lab8.dir/0004.cpp.i
 
-CMakeFiles/lab8.dir/0002.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab8.dir/0002.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/oleg/CLionProjects/lab8/0002.cpp -o CMakeFiles/lab8.dir/0002.cpp.s
+CMakeFiles/lab8.dir/0004.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab8.dir/0004.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/oleg/CLionProjects/lab8/0004.cpp -o CMakeFiles/lab8.dir/0004.cpp.s
 
 # Object files for target lab8
 lab8_OBJECTS = \
-"CMakeFiles/lab8.dir/0002.cpp.o"
+"CMakeFiles/lab8.dir/0004.cpp.o"
 
 # External object files for target lab8
 lab8_EXTERNAL_OBJECTS =
 
-lab8: CMakeFiles/lab8.dir/0002.cpp.o
+lab8: CMakeFiles/lab8.dir/0004.cpp.o
 lab8: CMakeFiles/lab8.dir/build.make
 lab8: CMakeFiles/lab8.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/oleg/CLionProjects/lab8/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable lab8"
