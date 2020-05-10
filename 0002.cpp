@@ -7,13 +7,13 @@ int main() {
     uint_fast64_t a, b = 0;
     std::ifstream file;
 
-    file.open("input.txt");
+    file.open("input2.txt");
 
     if (file.is_open()) {
 
-        file >> n >> m;
+        file >> n;
 
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < n; i++) {
             file >> a >> b;
             graph.SetEdges(a, b, 0);
         }
@@ -22,7 +22,7 @@ int main() {
 
     file.close();
 
-    graph.Adjacency_matrix_print("output.txt", n);
+    graph.Vertexes_degree("output2.txt");
 
     return 0;
 }
