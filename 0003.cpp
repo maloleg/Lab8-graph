@@ -7,7 +7,7 @@ int main() {
     uint_fast64_t a, b;
     std::ifstream file;
 
-    file.open("input3.txt");
+    file.open("input3-1.txt");
 
     if (file.is_open()) {
 
@@ -15,14 +15,14 @@ int main() {
 
         for (int i = 0; i < m; i++) {
             file >> a >> b;
-            graph.SetEdges(a, b, 1);
+            graph.SetEdges(a, b, 0);
         }
     }
     else std::cout << "input file is not open";
 
     file.close();
 
-    graph.Adjacency_matrix_print("output.txt", n);
+    graph.Shortest_path(in, out, "output3-1.txt");
 
     return 0;
 }
