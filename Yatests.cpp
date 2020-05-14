@@ -1,4 +1,6 @@
-#pragma once
+//#include <iostream>
+//#include "graph.hpp"
+
 #include <iostream>
 #include <unordered_map>
 #include <fstream>
@@ -14,10 +16,6 @@ private:
             std::pair<uint_fast64_t,
                     std::unordered_map<uint_fast64_t,
                             std::unordered_map<T, uint_fast64_t>>>> Gr;
-
-    std::unordered_map<uint_fast64_t, bool> tempMarked;
-
-    //map<int, pair<int, unordered_map<int, unordered_map<T, int>>>> Gr;
 public:
     void Adjacency_matrix_print (std::string Filename, uint_fast64_t maxV, bool Weighted){
         std::ofstream o;
@@ -130,118 +128,108 @@ public:
         }
     }
 
-    bool Is_connected(uint_fast64_t first, uint_fast64_t last){
-        if (first == last){
-            return true;
-        }
-        tempMarked[first] = true;
-        for (const auto& i : Gr[first].second){
-                if (!tempMarked[i.first]){
-                    if (this->Is_connected(i.first, last)) {
-                        //tempMarked[i.first] = true;
-                        return true;
-                    }
-                }
-        }
-        return false;
-    }
-
-    void Dijkstra_Shortest_path(uint_fast64_t first, uint_fast64_t last, std::string Filename, bool Direction, uint_fast64_t Vertexes, int Task) {
-        T tempW = -1;
-        std::vector<uint_fast64_t> path;
+    void Dijkstra_Shortest_path(uint_fast64_t first, uint_fast64_t last, std::string Filename, bool Direction){
         std::unordered_map<uint_fast64_t, T> tempWeights;
+        std::unordered_map<uint_fast64_t, bool> tempMarked;
+        uint_fast64_t min_not_marked = first;
+        T min_weight = std::numeric_limits<T>::max();
+        std::vector<uint_fast64_t> path;
+        for (const auto& i : Gr) {tempWeights[i.first] = std::numeric_limits<T>::max(); tempMarked[i.first] = false;}
 
-        for (uint_fast64_t i = 1; i <= Vertexes; i++) {
-            tempWeights[i] = std::numeric_limits<T>::max();
-            tempMarked[i] = false;
-        }
-        //if (this->Is_connected(first, last)) {
-        //    std::cout << this->Is_connected(first, last);
-
-            uint_fast64_t min_not_marked = first;
-            T min_weight = std::numeric_limits<T>::max();
-
-
-
-
-            //for (const auto& i : Gr)
-
-            tempWeights[first] = 0;
-            while (!tempMarked[last]) {
-//                for (uint_fast64_t i = 1; i <= Vertexes; i++) {
-//                    std::cout << i << " " << tempWeights[i] << " " << tempMarked[i] << "\n";
-//                }
-//                std::cout << "-------------------------------------------------------------------\n";
-                min_weight = std::numeric_limits<T>::max();
-                for (const auto &j : tempMarked) {
-                    if (j.second == false && min_weight > tempWeights[j.first]) {
-                        min_weight = tempWeights[j.first];
-                        min_not_marked = j.first;
-                    }
+        tempWeights[first] = 0;
+        while(!tempMarked[last]){
+            min_weight = std::numeric_limits<T>::max();
+            for (const auto& j : tempMarked){
+                if (j.second == false && min_weight > tempWeights[j.first]){
+                    min_weight = tempWeights[j.first];
+                    min_not_marked = j.first;
                 }
-                for (const auto &j : Gr[min_not_marked].second) {
-                    for (const auto &k : j.second) {
-                        if (tempWeights[j.first] > tempWeights[min_not_marked] + k.first &&
-                            tempMarked[j.first] == false)
-                            tempWeights[j.first] = tempWeights[min_not_marked] + k.first;
-                    }
-                }
-                tempMarked[min_not_marked] = true;
             }
+            for (const auto& j : Gr[min_not_marked].second){
+                for (const auto& k : j.second) {
+                    if (tempWeights[j.first] > tempWeights[min_not_marked] + k.first &&
+                        tempMarked[j.first] == false)
+                        tempWeights[j.first] = tempWeights[min_not_marked] + k.first;
+                }
+            }
+            tempMarked[min_not_marked] = true;
+        }
 //        for (const auto& i : Gr){
 //            std::cout << i.first << " " << tempWeights[i.first] <<  " " << tempMarked[i.first] << "\n";
 //        }
 
+        min_weight = tempWeights[last];
+        bool check = 0;
+        uint_fast64_t second = first;
+        uint_fast64_t current = last;
+        T tempW = 0;
+        if (Direction) this->Double_directions();
 
-            min_weight = tempWeights[last];
-            bool check = 0;
-            uint_fast64_t second = first;
-            uint_fast64_t current = last;
-            tempW = 0;
-            //std::cout << tempWeights[last];
-            if (Direction) this->Double_directions();
-
-            path.push_back(last);
-
-            while (current != first) {
-                //std::cout<< current << std::endl;
-                for (const auto &i : Gr[current].second) {
-
-                    for (const auto &j : i.second) {
-
-                        //std::cout << current << " " << min_weight << " " << j.first << " " << tempWeights[i.first] << "\n";
-                        if (min_weight - j.first == tempWeights[i.first]) {
-                            min_weight -= j.first;
-                            tempW += j.first;
-                            path.push_back(i.first);
-                            current = i.first;
-
-                            break;
-                        }
+        while (current!=first){
+            for (const auto& i : Gr[current].second){
+                for (const auto& j : i.second){
+                    //std::cout << current << " " << min_weight << " " << j.first << " " << tempWeights[i.first] << "\n";
+                    if (min_weight - j.first == tempWeights[i.first]){
+                        min_weight -= j.first;
+                        tempW += j.first;
+                        //path.push_back(j.first);
+                        current = i.first;
+                        break;
                     }
                 }
             }
-            //path.push_back(first);
-            //if (tempW == 0) tempW = -1;
+        }
+        //path.push_back(first);
 
-       // }
-
+        for(int i = path.size() - 1; i >= 0; i--){
+            std::cout << path[i];
+            if (i != 0) std::cout << "-";
+        }
         std::ofstream file;
         file.open(Filename);
-        if (Task == 4){
-            file << tempW;
-        }
-        if (Task == 3){
-            file << tempW << "\n";
-            if (tempW != -1) {
-                for (int i = path.size() - 1; i >= 0; i--) {
-                    file << path[i];
-                    if (i != 0) file << " ";
-                }
-            }
-        }
-        file.close();
+        file << tempW;
     }
 
 
 };
+
+
+int main() {
+    Graph<double> graph;
+    uint_fast64_t n, m, in, out;
+    uint_fast64_t a, b;
+    double w;
+    std::ifstream file;
+
+    file.open("input.txt");
+
+    if (file.is_open()) {
+
+        file >> n >> m;
+
+        for (int i = 0; i < m; i++) {
+            file >> a >> b >> w;
+            graph.SetEdges(a, b, w, 0);
+        }
+    }
+    else std::cout << "input file is not open";
+
+    file >> in >> out;
+
+
+    file.close();
+
+    //graph.Adjacency_matrix_print("Directed.txt", n);
+
+    //graph.Double_directions();
+
+    //graph.Adjacency_matrix_print("UnDirected.txt", n);
+
+    graph.Dijkstra_Shortest_path(in, out, "output.txt", 0);
+
+    return 0;
+}
+//
+// Created by oleg on 10.05.2020.
+//
+

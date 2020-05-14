@@ -15,14 +15,21 @@ int main() {
 
         for (int i = 0; i < m; i++) {
             file >> a >> b;
-            graph.SetEdges(a, b, 0);
+            graph.SetEdges(a, b, 1);
         }
     }
     else std::cout << "input file is not open";
 
     file.close();
 
-    graph.Shortest_path(in, out, "output3-1.txt");
+    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output3-1.txt", 1, n, 3);
+    else{
+        std::ofstream file;
+        file.open("output3-1.txt");
+        file << -1;
+        file.close();
+    }
+    //
 
     return 0;
 }

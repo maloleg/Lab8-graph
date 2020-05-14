@@ -6,13 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/oleg/CLionProjects/lab8/0004.cpp
-iostream
--
+C:/Users/malol/Documents/GitHub/Lab8-graph/0004.cpp
 graph.hpp
-/home/oleg/CLionProjects/lab8/graph.hpp
+C:/Users/malol/Documents/GitHub/Lab8-graph/graph.hpp
 
-/home/oleg/CLionProjects/lab8/graph.hpp
+C:/Users/malol/Documents/GitHub/Lab8-graph/graph.hpp
 iostream
 -
 unordered_map

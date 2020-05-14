@@ -1,5 +1,6 @@
-#include <iostream>
+//#include <iostream>
 #include "graph.hpp"
+
 
 int main() {
     Graph<double> graph;
@@ -8,7 +9,7 @@ int main() {
     double w;
     std::ifstream file;
 
-    file.open("input4-1.txt");
+    file.open("input4-2.txt");
 
     if (file.is_open()) {
 
@@ -16,10 +17,12 @@ int main() {
 
         for (int i = 0; i < m; i++) {
             file >> a >> b >> w;
-            graph.SetEdges(a, b, w, 0);
+            graph.SetEdges(a, b, w, 1);
         }
     }
     else std::cout << "input file is not open";
+
+    //file >> in >> out;
 
 
     file.close();
@@ -30,7 +33,16 @@ int main() {
 
     //graph.Adjacency_matrix_print("UnDirected.txt", n);
 
-    graph.Dijkstra_Shortest_path(in, out, "output4-1.txt");
+    //graph.Dijkstra_Shortest_path(in, out, "output4-2.txt", 1, n, 4);
+    //std::cout << graph.Is_connected(in, out);
+
+    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output4-2.txt", 1, n, 4);
+    else{
+        std::ofstream file;
+        file.open("output4-2.txt");
+        file << -1;
+        file.close();
+    }
 
     return 0;
 }
