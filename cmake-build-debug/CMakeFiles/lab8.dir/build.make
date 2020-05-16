@@ -56,27 +56,27 @@ include CMakeFiles/lab8.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab8.dir/flags.make
 
-CMakeFiles/lab8.dir/0004.cpp.obj: CMakeFiles/lab8.dir/flags.make
-CMakeFiles/lab8.dir/0004.cpp.obj: ../0004.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\malol\Documents\GitHub\Lab8-graph\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab8.dir/0004.cpp.obj"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\lab8.dir\0004.cpp.obj -c C:\Users\malol\Documents\GitHub\Lab8-graph\0004.cpp
+CMakeFiles/lab8.dir/0006.cpp.obj: CMakeFiles/lab8.dir/flags.make
+CMakeFiles/lab8.dir/0006.cpp.obj: ../0006.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\malol\Documents\GitHub\Lab8-graph\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab8.dir/0006.cpp.obj"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\lab8.dir\0006.cpp.obj -c C:\Users\malol\Documents\GitHub\Lab8-graph\0006.cpp
 
-CMakeFiles/lab8.dir/0004.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab8.dir/0004.cpp.i"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\malol\Documents\GitHub\Lab8-graph\0004.cpp > CMakeFiles\lab8.dir\0004.cpp.i
+CMakeFiles/lab8.dir/0006.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab8.dir/0006.cpp.i"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\malol\Documents\GitHub\Lab8-graph\0006.cpp > CMakeFiles\lab8.dir\0006.cpp.i
 
-CMakeFiles/lab8.dir/0004.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab8.dir/0004.cpp.s"
-	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\malol\Documents\GitHub\Lab8-graph\0004.cpp -o CMakeFiles\lab8.dir\0004.cpp.s
+CMakeFiles/lab8.dir/0006.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab8.dir/0006.cpp.s"
+	C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\malol\Documents\GitHub\Lab8-graph\0006.cpp -o CMakeFiles\lab8.dir\0006.cpp.s
 
 # Object files for target lab8
 lab8_OBJECTS = \
-"CMakeFiles/lab8.dir/0004.cpp.obj"
+"CMakeFiles/lab8.dir/0006.cpp.obj"
 
 # External object files for target lab8
 lab8_EXTERNAL_OBJECTS =
 
-lab8.exe: CMakeFiles/lab8.dir/0004.cpp.obj
+lab8.exe: CMakeFiles/lab8.dir/0006.cpp.obj
 lab8.exe: CMakeFiles/lab8.dir/build.make
 lab8.exe: CMakeFiles/lab8.dir/linklibs.rsp
 lab8.exe: CMakeFiles/lab8.dir/objects1.rsp

@@ -3,7 +3,7 @@
 
 int main() {
     Graph<double> graph;
-    uint_fast64_t n, m = 0;
+    uint_fast64_t n = 0;
     uint_fast64_t a, b = 0;
     std::ifstream file;
 
@@ -13,7 +13,7 @@ int main() {
 
         file >> n;
 
-        for (int i = 0; i < n; i++) {
+        for (uint_fast64_t i = 0; i < n; i++) {
             file >> a >> b;
             graph.SetEdges(a, b, 0);
         }

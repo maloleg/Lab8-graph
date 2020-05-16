@@ -4,16 +4,18 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <map>
 
 #define DEFAULT_WEIGHT 1
 
 template <typename T>
 class Graph{
 private:
-    std::unordered_map<uint_fast64_t,
-            std::pair<uint_fast64_t,
-                    std::unordered_map<uint_fast64_t,
-                            std::unordered_map<T, uint_fast64_t>>>> Gr;
+    std::unordered_map<uint_fast64_t, // Номер вершины
+            std::pair<uint_fast64_t, // Степень вершины (да, костыль, но -время)
+                    std::unordered_map<uint_fast64_t, // Номер вершины - куда ребро
+                            std::unordered_map<T, uint_fast64_t>>>> Gr; // Вес ребра и их кол-во
+                                                                       // (вообще нужно бы только одно минимальное, но переписывать лень)
 
     std::unordered_map<uint_fast64_t, bool> tempMarked;
 
@@ -29,8 +31,8 @@ public:
         else{
             //std::cout << "MaxV = " << maxV << "\n";
 
-            for (int i = 1; i <= maxV; i++){
-                for (int j = 1; j <= maxV; j++){
+            for (uint_fast64_t i = 1; i <= maxV; i++){
+                for (uint_fast64_t j = 1; j <= maxV; j++){
                     o << Gr[i].second[j][(T) 1];
                     if (j != maxV) o << " ";
 
@@ -146,6 +148,24 @@ public:
         return false;
     }
 
+    uint_fast64_t Is_connected(int_fast64_t current){
+        if(current == (int_fast64_t) -1)
+            for (const auto& i : Gr){
+                current = i.first;
+                break;
+            }
+
+        uint_fast64_t Visited_v = 1;
+
+        tempMarked[current] = true;
+
+        for (const auto& i : Gr[current].second){
+            if (!tempMarked[i.first]) Visited_v += Is_connected(i.first);
+        }
+
+        return Visited_v;
+    }
+
     void Dijkstra_Shortest_path(uint_fast64_t first, uint_fast64_t last, std::string Filename, bool Direction, uint_fast64_t Vertexes, int Task) {
         T tempW = -1;
         std::vector<uint_fast64_t> path;
@@ -194,8 +214,6 @@ public:
 
 
             min_weight = tempWeights[last];
-            bool check = 0;
-            uint_fast64_t second = first;
             uint_fast64_t current = last;
             tempW = 0;
             //std::cout << tempWeights[last];
@@ -243,5 +261,121 @@ public:
         file.close();
     }
 
+    void Prims_Algorithm(std::string Filename){
+        T tempW = 0;
+        uint_fast64_t from, to;
+        T tempMin = std::numeric_limits<T>::max();
+        bool check = false;
 
+
+        for (const auto& i : Gr){
+            tempMarked[i.first] = false;
+            for (const auto& j : i.second.second){
+                for (const auto& k : j.second){
+                    if (k.first < tempMin){
+                        tempMin = k.first;
+                        from = i.first;
+                        to = j.first;
+                    }
+                }
+            }
+        }
+//        for (const auto& i : tempMarked){
+//            std::cout << i.first << "  " << i.second << "\n";
+//        }
+
+        //std::cout << tempMin << " " << from << " " << to;
+
+        tempW += tempMin; tempMin = std::numeric_limits<T>::max();
+        tempMarked[from] = true; tempMarked[to] = true;
+
+        while(!check) {
+            check = true;
+            for (const auto &i : tempMarked) {
+                if (i.second) {
+                    for (const auto &j : Gr[i.first].second) {
+                        for (const auto &k : j.second) {
+                            if (k.first < tempMin && !tempMarked[j.first]) {
+                                tempMin = k.first;
+                                from = i.first;
+                                to = j.first;
+                            }
+                        }
+                    }
+                }
+            }
+            tempW += tempMin;
+            tempMin = std::numeric_limits<T>::max();
+            tempMarked[from] = true;
+            tempMarked[to] = true;
+
+
+
+            for (const auto& i : tempMarked){
+                //std::cout << i.first << "!" << i.second << "\n";
+                if (!i.second){
+                    check = false;
+                    break;
+                }
+            }
+        }
+        std::ofstream file;
+        file.open(Filename);
+        file << tempW;
+        file.close();
+    }
+
+    void Krukskals_algorithm(std::string Filename){
+        std::vector<std::pair<T, std::pair<uint_fast64_t, uint_fast64_t>>> tempMap;
+        std::map<std::pair<uint_fast64_t, uint_fast64_t>, bool> MarkedPairs;
+        std::vector<T> path;
+        T pathWeight = 0;
+        bool check = false;
+
+        for (const auto& i : Gr){
+            tempMarked[i.first] = false;
+            for (const auto& j : i.second.second){
+                for (const auto& k : j.second){
+                    if(!MarkedPairs[std::make_pair(j.first, i.first)]){
+                        tempMap.push_back(std::make_pair(k.first, std::make_pair(i.first, j.first)));
+                        MarkedPairs[std::make_pair(j.first, i.first)] = true;
+                    }
+                }
+            }
+        }
+
+        std::sort(tempMap.begin(), tempMap.end());
+
+        while (!check){
+            for (const auto& i : tempMap){
+                if (!tempMarked[i.second.first] || !tempMarked[i.second.second]){
+                    path.push_back(i.first);
+                    pathWeight += i.first;
+                    tempMarked[i.second.first] = true;
+                    tempMarked[i.second.second] = true;
+                }
+            }
+
+
+            check = true;
+
+            for (const auto& i : tempMarked){
+                if (!i.second){
+                    check = false;
+                }
+            }
+
+        }
+
+        std::sort(path.begin(), path.end());
+
+        std::ofstream file;
+        file.open(Filename);
+        file << pathWeight << "\n";
+        for(uint_fast64_t i = 0; i < path.size(); i++){
+            file << path[i];
+            if (i != path.size() - 1) file << " ";
+        }
+        file.close();
+    }
 };

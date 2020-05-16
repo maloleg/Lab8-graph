@@ -80,7 +80,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="C:/Users/malol/Documents/GitHub/Lab8-graph/0004.cpp">
+		<Unit filename="C:/Users/malol/Documents/GitHub/Lab8-graph/0006.cpp">
 			<Option target="lab8"/>
 		</Unit>
 		<Unit filename="C:/Users/malol/Documents/GitHub/Lab8-graph/CMakeLists.txt">

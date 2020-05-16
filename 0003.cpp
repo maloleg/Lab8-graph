@@ -13,7 +13,7 @@ int main() {
 
         file >> n >> m >> in >> out;
 
-        for (int i = 0; i < m; i++) {
+        for (uint_fast64_t i = 0; i < m; i++) {
             file >> a >> b;
             graph.SetEdges(a, b, 1);
         }
@@ -29,7 +29,7 @@ int main() {
         file << -1;
         file.close();
     }
-    //
+    //Прямо скажем, костыль тот ещё. Почему-то, если вызывать Is_connected в методе класса - он работает неправильно:(
 
     return 0;
 }

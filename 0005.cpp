@@ -4,20 +4,20 @@
 
 int main() {
     Graph<double> graph;
-    uint_fast64_t n, m, in, out;
+    uint_fast64_t n, m;
     uint_fast64_t a, b;
     double w;
     std::ifstream file;
 
-    file.open("input4-2.txt");
+    file.open("input5-1.txt");
 
     if (file.is_open()) {
 
-        file >> n >> m >> in >> out;
+        file >> n >> m;
 
         for (uint_fast64_t i = 0; i < m; i++) {
             file >> a >> b >> w;
-            graph.SetEdges(a, b, w, 1);
+            graph.SetEdges(a, b, w, 0);
         }
     }
     else std::cout << "input file is not open";
@@ -36,14 +36,15 @@ int main() {
     //graph.Dijkstra_Shortest_path(in, out, "output4-2.txt", 1, n, 4);
     //std::cout << graph.Is_connected(in, out);
 
-    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output4-2.txt", 1, n, 4);
+    if (graph.Is_connected(-1) == n){
+        graph.Prims_Algorithm("output5-1.txt");
+    }
     else{
         std::ofstream file;
-        file.open("output4-2.txt");
-        file << -1;
+        file.open("output5-1.txt");
+        file << 0;
         file.close();
     }
-//Прямо скажем, костыль тот ещё. Почему-то, если вызывать Is_connected в методе класса - он работает неправильно:(
     return 0;
 }
 //

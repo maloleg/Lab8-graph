@@ -122,32 +122,32 @@ lab8/fast:
 	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/build
 .PHONY : lab8/fast
 
-0004.obj: 0004.cpp.obj
+0006.obj: 0006.cpp.obj
 
-.PHONY : 0004.obj
+.PHONY : 0006.obj
 
 # target to build an object file
-0004.cpp.obj:
-	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/0004.cpp.obj
-.PHONY : 0004.cpp.obj
+0006.cpp.obj:
+	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/0006.cpp.obj
+.PHONY : 0006.cpp.obj
 
-0004.i: 0004.cpp.i
+0006.i: 0006.cpp.i
 
-.PHONY : 0004.i
+.PHONY : 0006.i
 
 # target to preprocess a source file
-0004.cpp.i:
-	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/0004.cpp.i
-.PHONY : 0004.cpp.i
+0006.cpp.i:
+	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/0006.cpp.i
+.PHONY : 0006.cpp.i
 
-0004.s: 0004.cpp.s
+0006.s: 0006.cpp.s
 
-.PHONY : 0004.s
+.PHONY : 0006.s
 
 # target to generate assembly for a file
-0004.cpp.s:
-	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/0004.cpp.s
-.PHONY : 0004.cpp.s
+0006.cpp.s:
+	$(MAKE) -f CMakeFiles\lab8.dir\build.make CMakeFiles/lab8.dir/0006.cpp.s
+.PHONY : 0006.cpp.s
 
 # Help Target
 help:
@@ -158,9 +158,9 @@ help:
 	@echo ... lab8
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... 0004.obj
-	@echo ... 0004.i
-	@echo ... 0004.s
+	@echo ... 0006.obj
+	@echo ... 0006.i
+	@echo ... 0006.s
 .PHONY : help
 
 
