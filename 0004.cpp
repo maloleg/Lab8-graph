@@ -9,7 +9,7 @@ int main() {
     double w;
     std::ifstream file;
 
-    file.open("input4-2.txt");
+    file.open("input.txt");
 
     if (file.is_open()) {
 
@@ -36,10 +36,10 @@ int main() {
     //graph.Dijkstra_Shortest_path(in, out, "output4-2.txt", 1, n, 4);
     //std::cout << graph.Is_connected(in, out);
 
-    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output4-2.txt", 1, n, 4);
+    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output.txt", 1, n, 4);
     else{
         std::ofstream file;
-        file.open("output4-2.txt");
+        file.open("output.txt");
         file << -1;
         file.close();
     }

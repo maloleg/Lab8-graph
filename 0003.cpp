@@ -7,7 +7,7 @@ int main() {
     uint_fast64_t a, b;
     std::ifstream file;
 
-    file.open("input3-1.txt");
+    file.open("input.txt");
 
     if (file.is_open()) {
 
@@ -22,10 +22,10 @@ int main() {
 
     file.close();
 
-    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output3-1.txt", 1, n, 3);
+    if (graph.Is_connected(in, out)) graph.Dijkstra_Shortest_path(in, out, "output.txt", 1, n, 3);
     else{
         std::ofstream file;
-        file.open("output3-1.txt");
+        file.open("output.txt");
         file << -1;
         file.close();
     }

@@ -7,7 +7,7 @@ int main() {
     uint_fast64_t a, b = 0;
     std::ifstream file;
 
-    file.open("input2.txt");
+    file.open("input.txt");
 
     if (file.is_open()) {
 
@@ -22,7 +22,7 @@ int main() {
 
     file.close();
 
-    graph.Vertexes_degree("output2.txt");
+    graph.Vertexes_degree("output.txt");
 
     return 0;
 }

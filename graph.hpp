@@ -329,16 +329,20 @@ public:
         std::vector<std::pair<T, std::pair<uint_fast64_t, uint_fast64_t>>> tempMap;
         std::map<std::pair<uint_fast64_t, uint_fast64_t>, bool> MarkedPairs;
         std::vector<T> path;
+        std::vector<std::vector<uint_fast64_t>> Sets;
         T pathWeight = 0;
-        bool check = false;
+        uint_fast64_t first;
+        uint_fast64_t second;
+        bool check;
 
         for (const auto& i : Gr){
-            tempMarked[i.first] = false;
+            //tempMarked[i.first] = false;
+            Sets.push_back({i.first});
             for (const auto& j : i.second.second){
                 for (const auto& k : j.second){
                     if(!MarkedPairs[std::make_pair(j.first, i.first)]){
                         tempMap.push_back(std::make_pair(k.first, std::make_pair(i.first, j.first)));
-                        MarkedPairs[std::make_pair(j.first, i.first)] = true;
+                        //MarkedPairs[std::make_pair(j.first, i.first)] = true;
                     }
                 }
             }
@@ -346,24 +350,39 @@ public:
 
         std::sort(tempMap.begin(), tempMap.end());
 
-        while (!check){
+        while (Sets.size() != 1){
             for (const auto& i : tempMap){
-                if (!tempMarked[i.second.first] || !tempMarked[i.second.second]){
+                check = true;
+                for (uint_fast64_t j = 0; j < Sets.size(); j++){
+                    if (find(Sets[j].begin(), Sets[j].end(), i.second.first) != Sets[j].end()) first = j;
+                    if (find(Sets[j].begin(), Sets[j].end(), i.second.second) != Sets[j].end()) second = j;
+
+                    if (find(Sets[j].begin(), Sets[j].end(), i.second.first) != Sets[j].end() &&
+                        find(Sets[j].begin(), Sets[j].end(), i.second.second) != Sets[j].end()){
+                        check = false;
+                        break;
+                    }
+                }
+
+                if (check){
                     path.push_back(i.first);
                     pathWeight += i.first;
-                    tempMarked[i.second.first] = true;
-                    tempMarked[i.second.second] = true;
+                    for (const auto& j : Sets[second]){
+                        Sets[first].push_back(j);
+                    }
+                    //Sets.insert(Sets[first].end(), Sets[second].begin(), Sets[second].end());
+                    Sets.erase(Sets.begin() + second);
                 }
             }
 
 
-            check = true;
-
-            for (const auto& i : tempMarked){
-                if (!i.second){
-                    check = false;
-                }
-            }
+//            check = true;
+//
+//            for (const auto& i : tempMarked){
+//                if (!i.second){
+//                    check = false;
+//                }
+//            }
 
         }
 

@@ -9,7 +9,7 @@ int main() {
     double w;
     std::ifstream file;
 
-    file.open("input6-1.txt");
+    file.open("input.txt");
 
     if (file.is_open()) {
 
@@ -36,11 +36,11 @@ int main() {
     //std::cout << graph.Is_connected(in, out);
 
     if (graph.Is_connected(-1) == n){
-        graph.Krukskals_algorithm("output6-1.txt");
+        graph.Krukskals_algorithm("output.txt");
     }
     else{
         std::ofstream file;
-        file.open("output6-1.txt");
+        file.open("output.txt");
         file << 0;
         file.close();
     }
